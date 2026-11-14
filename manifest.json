@@ -1,0 +1,54 @@
+{
+  "name": "BPTAR — Controle de Viaturas",
+  "short_name": "BPTAR",
+  "description": "Sistema de controle de viaturas da BPTAR",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0a0e1a",
+  "theme_color": "#00c9a7",
+  "lang": "pt-BR",
+  "categories": [
+    "utilities",
+    "productivity"
+  ],
+  "icons": [
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Entrada de Serviço",
+      "short_name": "Entrada",
+      "url": "./entrada.html",
+      "icons": [
+        {
+          "src": "icon-512.png",
+          "sizes": "512x512"
+        }
+      ]
+    },
+    {
+      "name": "Saída de Serviço",
+      "short_name": "Saída",
+      "url": "./saida.html",
+      "icons": [
+        {
+          "src": "icon-512.png",
+          "sizes": "512x512"
+        }
+      ]
+    }
+  ]
+}
