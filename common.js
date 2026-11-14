@@ -9,7 +9,7 @@
 
   /* ---------- Configuração (único lugar para trocar a URL do Apps Script) ---------- */
   GAR.SCRIPT_URL =
-    'COLE_AQUI_A_URL_EXEC_DO_BPTAR';
+    'https://script.google.com/macros/s/AKfycbzG0Kdc-ipnPuxcQ1l17ZBVkSu6tsRA0Zn_eaeIsxy5tO6JnmoKJd4K6r0vOh4DvvvG/exec';
   GAR.VERSAO = '2026.11.14.1';
   var RASCUNHO_VALIDADE_MS = 12 * 60 * 60 * 1000; // 12 h
   var MAX_FOTOS_POR_GRUPO = 8;

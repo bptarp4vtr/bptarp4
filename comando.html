@@ -412,7 +412,7 @@
 
   function carregarDados(){
     _segundosRestantes=30;document.getElementById('countdown').textContent='...';
-    fetch('COLE_AQUI_A_URL_EXEC_DO_BPTAR?page=dashboard')
+    fetch('https://script.google.com/macros/s/AKfycbzG0Kdc-ipnPuxcQ1l17ZBVkSu6tsRA0Zn_eaeIsxy5tO6JnmoKJd4K6r0vOh4DvvvG/exec?page=dashboard')
     .then(function(r){return r.json();})
     .then(exibirDados)
     .catch(function(e){exibirErro({message:e.message});});
@@ -475,7 +475,7 @@
 
   function carregarEntradas(){
     document.getElementById('twEntrada').innerHTML='<div style="text-align:center;padding:40px;color:var(--txt)"><div class="spin"></div></div>';
-    fetch('COLE_AQUI_A_URL_EXEC_DO_BPTAR?page=registros_entrada')
+    fetch('https://script.google.com/macros/s/AKfycbzG0Kdc-ipnPuxcQ1l17ZBVkSu6tsRA0Zn_eaeIsxy5tO6JnmoKJd4K6r0vOh4DvvvG/exec?page=registros_entrada')
     .then(function(r){return r.json();})
     .then(function(r){exibirRegistrosEntrada(r,'twEntrada');})
     .catch(function(e){document.getElementById('twEntrada').innerHTML='<div class="empty-state"><span class="icon">⚠️</span><p>Erro: '+esc(e.message||'')+'</p></div>';});
@@ -491,7 +491,7 @@
 
   function carregarSaidas(){
     document.getElementById('twSaida').innerHTML='<div style="text-align:center;padding:40px;color:var(--txt)"><div class="spin"></div></div>';
-    fetch('COLE_AQUI_A_URL_EXEC_DO_BPTAR?page=registros_saida')
+    fetch('https://script.google.com/macros/s/AKfycbzG0Kdc-ipnPuxcQ1l17ZBVkSu6tsRA0Zn_eaeIsxy5tO6JnmoKJd4K6r0vOh4DvvvG/exec?page=registros_saida')
     .then(function(r){return r.json();})
     .then(function(r){exibirRegistrosSaida(r,'twSaida');})
     .catch(function(e){document.getElementById('twSaida').innerHTML='<div class="empty-state"><span class="icon">⚠️</span><p>Erro: '+esc(e.message||'')+'</p></div>';});
@@ -545,14 +545,14 @@
   function carregarPainel(){
     document.getElementById('sistemasGrid').innerHTML='<div style="grid-column:1/-1;text-align:center;padding:50px;color:var(--txt)"><div class="spin"></div><p style="margin-top:12px;font-size:13px">Carregando dados administrativos...</p></div>';
     _setConexaoBadge('loading','Conectando...');
-    fetch('COLE_AQUI_A_URL_EXEC_DO_BPTAR?page=indicadores')
+    fetch('https://script.google.com/macros/s/AKfycbzG0Kdc-ipnPuxcQ1l17ZBVkSu6tsRA0Zn_eaeIsxy5tO6JnmoKJd4K6r0vOh4DvvvG/exec?page=indicadores')
     .then(function(r){return r.json();})
     .then(_onPainelCarregado)
     .catch(function(e){_onPainelErro({message:e.message});});
   }
 
   function carregarPainelSilencioso(){
-    fetch('COLE_AQUI_A_URL_EXEC_DO_BPTAR?page=indicadores')
+    fetch('https://script.google.com/macros/s/AKfycbzG0Kdc-ipnPuxcQ1l17ZBVkSu6tsRA0Zn_eaeIsxy5tO6JnmoKJd4K6r0vOh4DvvvG/exec?page=indicadores')
     .then(function(r){return r.json();})
     .then(function(resultado){if(resultado&&resultado.sucesso)_onPainelCarregado(resultado);})
     .catch(function(){});
