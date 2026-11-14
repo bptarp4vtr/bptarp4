@@ -799,7 +799,7 @@ tr:hover td{background:rgba(245,166,35,.025)}
         <div style="font-weight:700;font-size:13px;margin-bottom:10px">Atualizar KM de Troca</div>
         <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end">
           <div class="fgrp-m"><label class="flbl-m">Viatura</label><select class="c" id="oleoViat" onchange="selecionarViaturaOleo()" style="min-width:165px"><option value="">Selecione...</option></select></div>
-          <div class="fgrp-m"><label class="flbl-m">KM Atual</label><input type="number" class="c" id="oleoKmAtual" style="width:125px" readonly></div>
+          <div class="fgrp-m"><label class="flbl-m">KM Atual (odômetro hoje)</label><input type="number" class="c" id="oleoKmAtual" style="width:140px" placeholder="Ex: 48500" min="0"></div>
           <div class="fgrp-m"><label class="flbl-m">KM Próxima Troca <span class="req">*</span></label><input type="number" class="c" id="oleoKmProx" style="width:145px"></div>
           <button class="btn btn-g sm" onclick="salvarOleo()"><i class="fas fa-save"></i> Salvar</button>
         </div>
@@ -1302,7 +1302,7 @@ function exibirResultadosE(reg) {
   document.getElementById('tbEnt').innerHTML = reg.map(function(r, idx){
     var temA = r.alteracoes&&r.alteracoes!=='--'&&r.alteracoes!=='-'&&r.alteracoes!=='Sem alteração'&&r.alteracoes.toUpperCase()!=='NÃO';
     var telL = String(r.telefone||'').replace(/\D/g,'');
-    var wa   = telL?'<br><a class="wa-btn" href="https://wa.me/55'+telL+'" target="_blank">📱 WA</a>':'';
+    var wa   = telL?'<br><a class="wa-btn" href="https://wa.me/55'+telL+'" target="_blank" rel="noopener noreferrer">📱 WA</a>':'';
 
     var limpa   = String(r.viaturaLimpaEntrada||'').trim();
     var descLim = String(r.descLimpaEntrada||'').trim();
@@ -1319,7 +1319,7 @@ function exibirResultadosE(reg) {
     var linhaDetalhe = '<tr class="det-row" id="det-e-'+idx+'" style="display:none"><td colspan="9"><div class="det-grid">';
     if(limpa) linhaDetalhe+='<div class="det-bloco"><div class="det-lbl">🧹 Viatura Limpa na Assunção?</div><div class="det-val '+limpaClass+'">'+esc(limpa)+(descLim?'<br><small style="font-weight:400;color:var(--txt2)">'+esc(descLim)+'</small>':'')+'</div></div>';
     if(descAv&&descAv!=='--') linhaDetalhe+='<div class="det-bloco"><div class="det-lbl">⚠️ Avarias / Alterações Elétricas</div><div class="det-val warn-campo">'+esc(descAv)+'</div></div>';
-    if(link) linhaDetalhe+='<div class="det-bloco"><div class="det-lbl">📸 Imagens</div><div class="det-val"><a href="'+esc(link)+'" target="_blank">🔗 Ver imagens</a></div></div>';
+    if(link) linhaDetalhe+='<div class="det-bloco"><div class="det-lbl">📸 Imagens</div><div class="det-val"><a href="'+esc(link)+'" target="_blank" rel="noopener noreferrer">🔗 Ver imagens</a></div></div>';
     if(cartao) linhaDetalhe+='<div class="det-bloco"><div class="det-lbl">💳 Cartão confere com a placa?</div><div class="det-val '+cartaoClass+'">'+esc(cartao)+(diverg?'<br><small style="color:#b91c1c">'+esc(diverg)+'</small>':'')+'</div></div>';
     linhaDetalhe += '</div></td></tr>';
 
@@ -1387,7 +1387,7 @@ function exibirResultadosS(reg) {
   document.getElementById('tbSai').innerHTML = reg.map(function(r, idx){
     var temP = String(r.pendencia||'').toUpperCase()==='SIM'||String(r.sinistro||'').toUpperCase()==='SIM';
     var telL = String(r.telefone||'').replace(/\D/g,'');
-    var wa   = telL?'<br><a class="wa-btn" href="https://wa.me/55'+telL+'" target="_blank">📱 WA</a>':'';
+    var wa   = telL?'<br><a class="wa-btn" href="https://wa.me/55'+telL+'" target="_blank" rel="noopener noreferrer">📱 WA</a>':'';
 
     var limpa    = String(r.viaturaLimpaSaida||'').trim();
     var justLim  = String(r.justLimpaSaida||'').trim();
@@ -1402,7 +1402,7 @@ function exibirResultadosS(reg) {
     var linhaDetalhe = '<tr class="det-row" id="det-s-'+idx+'" style="display:none"><td colspan="11"><div class="det-grid">';
     if(limpa) linhaDetalhe+='<div class="det-bloco"><div class="det-lbl">🧹 Viatura Entregue Limpa?</div><div class="det-val '+limpaClass+'">'+esc(limpa)+(justLim?'<br><small style="font-weight:400;color:var(--txt2)">'+esc(justLim)+'</small>':'')+'</div></div>';
     if(descAvOk) linhaDetalhe+='<div class="det-bloco" style="grid-column:1/-1"><div class="det-lbl" style="color:#b91c1c;font-weight:700">⚠️ ALTERAÇÕES OCORRIDAS DURANTE O SERVIÇO</div><div class="det-val warn-campo" style="white-space:pre-line;font-size:12px;line-height:1.5">'+esc(descAv)+'</div></div>';
-    if(link) linhaDetalhe+='<div class="det-bloco"><div class="det-lbl">📸 Imagens</div><div class="det-val"><a href="'+esc(link)+'" target="_blank">🔗 Ver imagens</a></div></div>';
+    if(link) linhaDetalhe+='<div class="det-bloco"><div class="det-lbl">📸 Imagens</div><div class="det-val"><a href="'+esc(link)+'" target="_blank" rel="noopener noreferrer">🔗 Ver imagens</a></div></div>';
     linhaDetalhe += '</div></td></tr>';
 
     var toggleBtn = temExtras
@@ -1558,7 +1558,7 @@ async function carregarUsuarios() {
   try {
     var r=await api({tipo:'usuariosListar',token:_token});
     if(!r.sucesso||!r.dados||!r.dados.length){document.getElementById('tbUsr').innerHTML='<tr><td colspan="6" class="erow">Nenhum usuário.</td></tr>';return;}
-    document.getElementById('tbUsr').innerHTML=r.dados.map(function(u){var at=u.ativo==='SIM';return'<tr><td style="font-family:var(--mono);font-weight:700">'+esc(u.matricula)+'</td><td style="font-weight:700">'+esc(u.nomeGuerra)+'</td><td><span class="bp '+(u.perfil==='ADMIN'?'b-admin':'b-op')+'">'+esc(u.perfil)+'</span></td><td style="text-align:center"><span class="bp '+(at?'b-ativ':'b-inativ')+'">'+(at?'ATIVO':'INATIVO')+'</span></td><td style="color:var(--txt2);font-size:10px">'+(u.ultimoAcesso||'—')+'</td><td style="text-align:center">'+(at?'<button class="btn btn-d sm" onclick="alterarStatus(\''+u.matricula+'\',\'NÃO\')">Desativar</button>':'<button class="btn btn-g sm" onclick="alterarStatus(\''+u.matricula+'\',\'SIM\')">Ativar</button>')+' <button class="btn btn-o sm" onclick="redefSenha(\''+u.matricula+'\')">🔑</button></td></tr>';}).join('');
+    document.getElementById('tbUsr').innerHTML=r.dados.map(function(u){var at=u.ativo==='SIM';return'<tr><td style="font-family:var(--mono);font-weight:700">'+esc(u.matricula)+'</td><td style="font-weight:700">'+esc(u.nomeGuerra)+'</td><td><span class="bp '+(u.perfil==='ADMIN'?'b-admin':'b-op')+'">'+esc(u.perfil)+'</span></td><td style="text-align:center"><span class="bp '+(at?'b-ativ':'b-inativ')+'">'+(at?'ATIVO':'INATIVO')+'</span></td><td style="color:var(--txt2);font-size:10px">'+esc(u.ultimoAcesso||'—')+'</td><td style="text-align:center">'+(at?'<button class="btn btn-d sm" onclick="alterarStatus(\''+jsAttr(u.matricula)+'\',\'NÃO\')">Desativar</button>':'<button class="btn btn-g sm" onclick="alterarStatus(\''+jsAttr(u.matricula)+'\',\'SIM\')">Ativar</button>')+' <button class="btn btn-o sm" onclick="redefSenha(\''+jsAttr(u.matricula)+'\')">🔑</button></td></tr>';}).join('');
   } catch(e) { document.getElementById('tbUsr').innerHTML='<tr><td colspan="6" class="erow">Erro: '+esc(e.message)+'</td></tr>'; }
 }
 
@@ -1625,7 +1625,7 @@ function _renderMovEntradas() {
   tb.innerHTML = pag.map(function(r){
     var temA = r.alteracoes&&r.alteracoes!=='--'&&r.alteracoes!=='-'&&r.alteracoes!=='Sem alteração'&&r.alteracoes.toUpperCase()!=='NÃO';
     var telL = String(r.telefone||'').replace(/\D/g,'');
-    var wa   = telL ? '<br><a class="wa-btn" href="https://wa.me/55'+telL+'" target="_blank">📱 WA</a>' : '';
+    var wa   = telL ? '<br><a class="wa-btn" href="https://wa.me/55'+telL+'" target="_blank" rel="noopener noreferrer">📱 WA</a>' : '';
     var placa = _placaPorPrefixo(r.prefixo);
     var viat  = _viaturaByPrefixo(r.prefixo);
     var prefixoExibir = (viat && _normPref(viat.prefixo) !== _normPref(r.prefixo))
@@ -1662,7 +1662,7 @@ function _renderMovSaidas() {
   tb.innerHTML = pag.map(function(r){
     var temP = String(r.pendencia||'').toUpperCase()==='SIM'||String(r.sinistro||'').toUpperCase()==='SIM';
     var telL = String(r.telefone||'').replace(/\D/g,'');
-    var wa   = telL ? '<br><a class="wa-btn" href="https://wa.me/55'+telL+'" target="_blank">📱 WA</a>' : '';
+    var wa   = telL ? '<br><a class="wa-btn" href="https://wa.me/55'+telL+'" target="_blank" rel="noopener noreferrer">📱 WA</a>' : '';
     var placa = _placaPorPrefixo(r.prefixo);
     var viat  = _viaturaByPrefixo(r.prefixo);
     var prefixoExibir = (viat && _normPref(viat.prefixo) !== _normPref(r.prefixo))
@@ -1881,8 +1881,8 @@ function renderTabelaViaturas(lista) {
       '<td>'+esc(v.ano||'--')+'</td>' +
       '<td><span class="bp '+(ativo?'b-ativ':'b-inativ')+'">'+esc(v.status||'--')+'</span></td>' +
       '<td style="text-align:center">' +
-        '<button class="btn btn-o sm" onclick="editarViatura(\''+esc(v.prefixo)+'\')">✏️</button> ' +
-        '<button class="btn btn-d sm" onclick="excluirViatura(\''+esc(v.prefixo)+'\')">🗑️</button>' +
+        '<button class="btn btn-o sm" onclick="editarViatura(\''+jsAttr(v.prefixo)+'\')">✏️</button> ' +
+        '<button class="btn btn-d sm" onclick="excluirViatura(\''+jsAttr(v.prefixo)+'\')">🗑️</button>' +
       '</td></tr>';
   }).join('');
 }
@@ -1992,7 +1992,8 @@ async function carregarTabelaOleo() {
 
 async function selecionarViaturaOleo() {
   var prefixo = document.getElementById('oleoViat').value;
-  if (!prefixo) { document.getElementById('oleoKmAtual').value=''; document.getElementById('oleoKmProx').value=''; return; }
+  document.getElementById('oleoKmAtual').value=''; document.getElementById('oleoKmProx').value='';
+  if (!prefixo) return;
   loading('Buscando dados...');
   try {
     var r = await api({tipo:'buscarKmAtualViatura', token:_token, prefixo:prefixo});
@@ -2009,12 +2010,21 @@ async function salvarOleo() {
   var kmProx  = document.getElementById('oleoKmProx').value;
   var kmAtual = document.getElementById('oleoKmAtual').value;
   if (!prefixo || !kmProx) { toast('Selecione a viatura e informe o KM da próxima troca.','err'); return; }
+  var nProx = Number(kmProx), nAtual = kmAtual === '' ? 0 : Number(kmAtual);
+  if (!isFinite(nProx) || nProx <= 0) { toast('KM da próxima troca inválido.','err'); return; }
+  if (!isFinite(nAtual) || nAtual < 0) { toast('KM atual inválido.','err'); return; }
   loading('Salvando...');
   try {
-    var r = await api({tipo:'salvarKmOleoViatura', token:_token, dados:{prefixo:prefixo, kmAtual:kmAtual, kmProximaTroca:kmProx}});
+    var r = await api({tipo:'salvarKmOleoViatura', token:_token, dados:{prefixo:prefixo, kmAtual:nAtual, kmProximaTroca:nProx}});
     unload();
-    toast(r&&r.sucesso ? 'KM de óleo salvo!' : (r.mensagem||'Erro'), r&&r.sucesso ? 'ok' : 'err');
-    if (r&&r.sucesso) await carregarTabelaOleo();
+    var ok = !!(r && r.sucesso);
+    toast(ok ? (r.mensagem || 'KM de óleo salvo!') : ((r && r.mensagem) || 'Erro ao salvar.'), ok ? 'ok' : 'err');
+    if (ok) {
+      document.getElementById('oleoViat').value='';
+      document.getElementById('oleoKmAtual').value='';
+      document.getElementById('oleoKmProx').value='';
+      await carregarTabelaOleo();
+    }
   } catch(e) { unload(); toast('Erro: '+e.message,'err'); }
 }
 
@@ -2065,8 +2075,8 @@ async function carregarListaOf(apenasEmOficina) {
         '<td>'+esc(fmtData(v.previsaoSaida||v.previsao||'--'))+'</td>' +
         '<td><span class="bp '+(emOf?'b-ofic':'b-ativ')+'">'+esc(v.status||'--')+'</span></td>' +
         '<td style="text-align:center">' +
-          (emOf ? '<button class="btn btn-g sm" onclick="registrarRetornoOf(\''+esc(v.viatura||v.prefixo)+'\')">✅ Retorno</button> ' : '') +
-          '<button class="btn btn-d sm" onclick="excluirOfReg(\''+esc(v.viatura||v.prefixo)+'\')">🗑️</button>' +
+          (emOf ? '<button class="btn btn-g sm" onclick="registrarRetornoOf(\''+jsAttr(v.viatura||v.prefixo)+'\')">✅ Retorno</button> ' : '') +
+          '<button class="btn btn-d sm" onclick="excluirOfReg(\''+jsAttr(v.viatura||v.prefixo)+'\')">🗑️</button>' +
         '</td></tr>';
     }).join('');
   } catch(e) {
@@ -2127,10 +2137,10 @@ async function carregarListasCfg() {
     var listaOf = of.status==='fulfilled' ? (of.value||[]) : [];
     var listaMot = mot.status==='fulfilled' ? (mot.value||[]) : [];
     document.getElementById('cfgOfLista').innerHTML = listaOf.map(function(n){
-      return '<div style="display:flex;align-items:center;justify-content:space-between;padding:7px 10px;border-bottom:1px solid var(--bd)"><span>'+esc(n)+'</span><button class="btn btn-d sm" onclick="excluirOficinaCfg(\''+esc(n)+'\')">🗑️</button></div>';
+      return '<div style="display:flex;align-items:center;justify-content:space-between;padding:7px 10px;border-bottom:1px solid var(--bd)"><span>'+esc(n)+'</span><button class="btn btn-d sm" onclick="excluirOficinaCfg(\''+jsAttr(n)+'\')">🗑️</button></div>';
     }).join('') || '<div style="color:var(--txt2);padding:12px">Nenhuma oficina.</div>';
     document.getElementById('cfgMotLista').innerHTML = listaMot.map(function(n){
-      return '<div style="display:flex;align-items:center;justify-content:space-between;padding:7px 10px;border-bottom:1px solid var(--bd)"><span>'+esc(n)+'</span><button class="btn btn-d sm" onclick="excluirMotivoCfg(\''+esc(n)+'\')">🗑️</button></div>';
+      return '<div style="display:flex;align-items:center;justify-content:space-between;padding:7px 10px;border-bottom:1px solid var(--bd)"><span>'+esc(n)+'</span><button class="btn btn-d sm" onclick="excluirMotivoCfg(\''+jsAttr(n)+'\')">🗑️</button></div>';
     }).join('') || '<div style="color:var(--txt2);padding:12px">Nenhum motivo.</div>';
   } catch(e) {}
 }
@@ -2187,9 +2197,9 @@ function renderSetoresM(lista) {
   }
   document.getElementById('setoresLista').innerHTML = lista.map(function(s) {
     return '<div style="display:flex;align-items:center;gap:10px;padding:8px 13px;border-bottom:1px solid var(--bd)">' +
-      '<span style="background:rgba(245,166,35,.15);color:var(--ac);font-size:10px;font-weight:700;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0">'+s.indice+'</span>' +
+      '<span style="background:rgba(245,166,35,.15);color:var(--ac);font-size:10px;font-weight:700;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0">'+num(s.indice)+'</span>' +
       '<span style="flex:1;font-size:13px;font-weight:600">'+esc(s.nome)+'</span>' +
-      '<button class="btn btn-d sm" onclick="excluirSetorM('+s.indice+',\''+esc(s.nome)+'\')">🗑️</button>' +
+      '<button class="btn btn-d sm" onclick="excluirSetorM('+num(s.indice)+',\''+jsAttr(s.nome)+'\')">🗑️</button>' +
     '</div>';
   }).join('');
 }
@@ -2201,7 +2211,7 @@ async function adicionarSetorM() {
   try {
     var r = await api({tipo:'adicionarSetor', token:_token, nome:nome});
     unload();
-    if (r.sucesso) { toast('Setor "'+r.nome+'" adicionado!','ok'); document.getElementById('setorNovo').value=''; await carregarSetoresM(); }
+    if (r.sucesso) { toast('Setor "'+(r.nome||nome)+'" adicionado!','ok'); document.getElementById('setorNovo').value=''; await carregarSetoresM(); }
     else toast('⚠️ '+(r.erro||'Erro'),'err');
   } catch(e) { unload(); toast('Erro: '+e.message,'err'); }
 }
@@ -2221,7 +2231,13 @@ async function excluirSetorM(indice, nome) {
 //  UTILS
 // ═══════════════════════════════════════════════════════
 function fechar(id){ var el=document.getElementById(id); if(el) el.classList.remove('on'); }
-function esc(v){ return String(v||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function esc(v){ return String(v==null?'':v).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
+// Valor dentro de onclick="f('...')": escapa para JS e depois para HTML (esc sozinho NÃO basta aqui)
+function jsAttr(v){
+  return esc(String(v==null?'':v).replace(/\\/g,'\\\\').replace(/'/g,"\\'")
+    .replace(/\r/g,'\\r').replace(/\n/g,'\\n').replace(/\u2028/g,'\\u2028').replace(/\u2029/g,'\\u2029'));
+}
+function num(v){ var x=Number(v); return isFinite(x)?x:0; }
 function fmtData(s){
   if(!s||s==='--'||s==='-')return s;
   var m=String(s).trim().match(/^(\d{2})\/(\d{2})\/(\d{4})(?:\s+(\d{2}):(\d{2}))?/);
