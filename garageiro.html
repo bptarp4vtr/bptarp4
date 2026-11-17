@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Garageiro — BPTAR</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -339,6 +339,66 @@ tr:hover td{background:rgba(26,115,232,.05)}
 .sk-card{height:92px;border-radius:10px;border:1px solid var(--bd);background:linear-gradient(90deg,var(--bg2) 25%,var(--bg3) 50%,var(--bg2) 75%);background-size:200% 100%;animation:skl 1.2s linear infinite}
 @keyframes skl{to{background-position:-200% 0}}
 @media (prefers-reduced-motion:reduce){.sk-card{animation:none}}
+
+/* ══ TEMA CLARO REFINADO ═══════════════════════════ */
+:root{
+  --bg:#eef3f8;--bg2:#ffffff;--bg3:#f6f9fc;--bg4:#e9eff6;
+  --bd:#e2e8f0;--bd2:#cbd5e1;
+  --ac:#2b8fb5;--ac2:#17678a;--ac-dim:rgba(43,143,181,.12);--ac-bd:rgba(43,143,181,.4);
+  --txt:#0f172a;--txt2:#52627a;--txt3:#8493a8;
+  --sans:'Inter','Segoe UI',system-ui,sans-serif;--cond:'Inter','Segoe UI',system-ui,sans-serif;--mono:'Inter','Segoe UI',system-ui,sans-serif;
+  --rad:14px;--sh1:0 1px 2px rgba(15,23,42,.05),0 4px 14px rgba(15,23,42,.06);--sh2:0 2px 4px rgba(15,23,42,.06),0 12px 28px rgba(15,23,42,.12);
+}
+html,body{background:linear-gradient(180deg,#f4f8fc 0,#eaf0f6 100%) fixed;font-feature-settings:"tnum";letter-spacing:-.005em}
+.hdr{background:rgba(255,255,255,.92);backdrop-filter:blur(8px);box-shadow:0 1px 0 var(--bd),0 4px 16px rgba(15,23,42,.04);border-top:3px solid var(--ac)}
+.hdr-title{font-size:18px;font-weight:800;letter-spacing:-.02em}
+.hdr-sub{font-size:11px;color:var(--txt2)}
+.hdr-badge,.hamburger{border-radius:10px;background:#fff;box-shadow:var(--sh1)}
+.sidebar{box-shadow:8px 0 32px rgba(15,23,42,.14)}
+.sb-brand-ico{box-shadow:0 6px 16px rgba(43,143,181,.35)}
+.sb-brand-name strong{font-weight:800;letter-spacing:-.01em}
+.sb-section{letter-spacing:.8px;color:var(--txt3)}
+.sb-item{margin:1px 8px;border-radius:10px;border-left:0;padding:10px 12px;font-weight:600}
+.sb-item:hover{background:var(--bg3)}
+.sb-item.active{background:var(--ac-dim);color:var(--ac2);box-shadow:inset 3px 0 0 var(--ac)}
+.sb-user{border-radius:12px;background:var(--bg3)}
+
+/* cartões de resumo */
+.sc,.scp{border:1px solid var(--bd);border-top:4px solid var(--sc-c,var(--ac));border-radius:var(--rad);box-shadow:var(--sh1);display:flex;flex-direction:column;align-items:center;text-align:center;padding:14px 12px 15px}
+.sc::before{display:none}
+.sc::after{content:'';position:absolute;right:-18px;top:-18px;width:64px;height:64px;border-radius:50%;background:var(--sc-c,var(--ac));opacity:.08}
+.sc-lbl,.scp-lbl{order:-1;margin:0 0 8px;font-size:10.5px;font-weight:800;letter-spacing:.9px;color:var(--txt2)}
+.sc-ico{order:3;margin:8px 0 0;font-size:14px;opacity:.85}
+.sc-val,.scp-val{color:var(--txt);font-size:34px;font-weight:800;letter-spacing:-.03em}
+.scp{border-top-width:3px}
+.stats,.stats-pq{gap:14px}
+
+/* viaturas */
+.v-card{border-radius:var(--rad);box-shadow:var(--sh1);padding:14px 16px;transition:transform .18s,box-shadow .18s,border-color .18s}
+.v-card:hover{transform:translateY(-2px);box-shadow:var(--sh2);border-color:var(--bd2)}
+.v-card.semretorno{box-shadow:var(--sh1),0 0 0 1px rgba(220,38,38,.2)}
+
+/* tabelas */
+.tw,.tw-sm,.mov-tw{border-radius:12px;box-shadow:var(--sh1);border-color:var(--bd)}
+thead{background:#f1f5f9}
+th{font-size:10px;font-weight:800;letter-spacing:.8px;color:var(--txt2);padding:11px 12px;border-bottom:1px solid var(--bd2)}
+td{padding:10px 12px;border-bottom:1px solid #eef2f7;font-weight:500}
+tr:hover td{background:#f5fafd}
+.bp,.b-ativ,.b-inativ,.b-admin,.b-op,.b-serv,.b-disp,.b-ofic,.b-urgente,.b-atencao,.b-ok,.b-semdados{border-radius:999px;font-weight:800;letter-spacing:.4px}
+
+/* botões e campos */
+.btn{border-radius:10px;font-weight:700;padding:8px 15px;box-shadow:0 1px 2px rgba(15,23,42,.08)}
+.btn:hover{filter:brightness(1.06);transform:translateY(-1px);box-shadow:0 6px 14px rgba(15,23,42,.14)}
+.btn-p{background:linear-gradient(180deg,#34a0c8,var(--ac2))}
+.btn-s{background:#fff}
+input,select,textarea{border-radius:10px!important;font-family:var(--sans)}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--ac)!important;box-shadow:0 0 0 3px rgba(43,143,181,.18)}
+
+/* modais */
+.modal{border-radius:18px;box-shadow:0 30px 80px rgba(15,23,42,.28);border:0}
+.toast-el{border-radius:12px;box-shadow:var(--sh2)}
+.pd-preview{border-radius:var(--rad);box-shadow:var(--sh1)}
+.adm-btn{border-radius:12px;box-shadow:var(--sh1)}
 </style>
 </head>
 <body>
