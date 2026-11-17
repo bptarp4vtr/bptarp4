@@ -222,6 +222,8 @@
   var LABELS = ['Viatura', 'Setor', 'Guarnição', 'Abastecimento', 'Limpeza', 'Finalização'];
   var idEnvio = GAR.uuid(); // identifica este registro (reenvio após falha de rede mantém o mesmo id; o servidor ignora repetidos)
   var enviando = false, finalizando = false;
+  var semEntrada = false; // viatura sem entrada de serviço registrada: a saída fica bloqueada
+  var MSG_SEM_ENTRADA = 'Esta viatura não tem entrada de serviço registrada. Registre a entrada antes de dar a baixa ou procure o garageiro.';
   var infoPromessas = {}; // uma única consulta por viatura atende odômetro E saldo
   var seqConsulta = 0;    // só vale a resposta da consulta mais recente (troca de viatura invalida as anteriores)
   var W;
@@ -267,10 +269,13 @@
     var p = $('prefixo').value, meu = ++seqConsulta;
     if (!preservar) { $('odometroFinal').value = ''; $('odoConfirma').checked = false; }
     odo.limpar();
+    semEntrada = false;
     if (!p) return;
     odo.consultando();
     infoDaViatura(p).then(function (d) {
       if (meu !== seqConsulta) return; // viatura trocada enquanto consultava
+      semEntrada = !!(d && d.saidaAberta === false);
+      if (semEntrada) GAR.mostrarErro(MSG_SEM_ENTRADA);
       var n = d && d.odometro != null ? Number(d.odometro) : NaN;
       if (isNaN(n)) throw new Error('odômetro indisponível');
       odo.definirRef(n);
@@ -284,6 +289,7 @@
     var ok = true;
     if (n === 1) {
       if (!$('prefixo').value) { GAR.invalido('prefixo'); ok = false; }
+      if (semEntrada) { GAR.mostrarErro(MSG_SEM_ENTRADA); ok = false; }
       var pr = odo.problema(finalizando);
       if (pr === 'vazio') { GAR.invalido('odometroFinal'); ok = false; }
       else if (pr === 'consultando') { GAR.mostrarErro('Aguarde um instante: consultando o último odômetro da viatura...'); ok = false; }
