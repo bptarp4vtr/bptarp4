@@ -399,6 +399,14 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--ac)!impo
 .toast-el{border-radius:12px;box-shadow:var(--sh2)}
 .pd-preview{border-radius:var(--rad);box-shadow:var(--sh1)}
 .adm-btn{border-radius:12px;box-shadow:var(--sh1)}
+
+/* barras de rolagem visíveis */
+*{scrollbar-width:auto;scrollbar-color:#7d8da3 #e4eaf2}
+::-webkit-scrollbar{width:12px;height:12px}
+::-webkit-scrollbar-track{background:#e4eaf2;border-radius:8px}
+::-webkit-scrollbar-thumb{background:#7d8da3;border-radius:8px;border:2px solid #e4eaf2}
+::-webkit-scrollbar-thumb:hover{background:var(--ac2)}
+::-webkit-scrollbar-corner{background:#e4eaf2}
 </style>
 </head>
 <body>
@@ -1681,7 +1689,7 @@ function _renderMovEntradas() {
   if (prev) prev.disabled = _movEPag <= 1;
   if (next) next.disabled = _movEPag >= totalPag;
 
-  if (!pag.length) { tb.innerHTML = '<tr><td colspan="8" class="erow">📭 Sem registros no período</td></tr>'; return; }
+  if (!pag.length) { tb.innerHTML = '<tr><td colspan="8" class="erow">📭 Sem registros ainda</td></tr>'; return; }
   tb.innerHTML = pag.map(function(r){
     var temA = r.alteracoes&&r.alteracoes!=='--'&&r.alteracoes!=='-'&&r.alteracoes!=='Sem alteração'&&r.alteracoes.toUpperCase()!=='NÃO';
     var telL = String(r.telefone||'').replace(/\D/g,'');
@@ -1718,7 +1726,7 @@ function _renderMovSaidas() {
   if (prev) prev.disabled = _movSPag <= 1;
   if (next) next.disabled = _movSPag >= totalPag;
 
-  if (!pag.length) { tb.innerHTML = '<tr><td colspan="10" class="erow">📭 Sem registros no período</td></tr>'; return; }
+  if (!pag.length) { tb.innerHTML = '<tr><td colspan="10" class="erow">📭 Sem registros ainda</td></tr>'; return; }
   tb.innerHTML = pag.map(function(r){
     var temP = String(r.pendencia||'').toUpperCase()==='SIM'||String(r.sinistro||'').toUpperCase()==='SIM';
     var telL = String(r.telefone||'').replace(/\D/g,'');
