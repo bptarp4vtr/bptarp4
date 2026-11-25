@@ -419,6 +419,153 @@ td{font-weight:700;color:var(--txt)}
 .aguia-ico img{width:100%;height:100%;object-fit:cover;display:block}
 .hdr-aguia{width:36px;height:36px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid var(--ac);box-shadow:0 2px 8px rgba(15,23,42,.25)}
 </style>
+
+<style id="bptar-visual-v2">
+/* ═══════════════════════════════════════════════════════════════════
+   MODERNIZAÇÃO VISUAL v2 — somente CSS escopado
+   Escopo: .rel-grupo/.rel-btn (Relatórios)  e  .mv-* (Últimas Movimentações)
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ───── RELATÓRIOS ───── */
+.rel-grupo{border-radius:16px;box-shadow:var(--sh1)}
+.rel-grupo .adm-grupo-hdr.p{padding:13px 18px;font-size:12px;letter-spacing:.8px;background:linear-gradient(90deg,rgba(126,34,206,.10),rgba(126,34,206,.03))}
+.rel-grupo .adm-btns{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;padding:16px}
+.rel-grupo .adm-btn.rel-btn{position:relative;overflow:hidden;width:100%;min-height:72px;padding:12px 14px;gap:12px;border-radius:14px;
+  border:1px solid rgba(126,34,206,.18);background:linear-gradient(180deg,#fff 0,#faf6ff 100%);
+  box-shadow:0 1px 2px rgba(76,29,149,.06);transition:transform .18s,box-shadow .18s,border-color .18s,background .18s}
+.rel-grupo .adm-btn.rel-btn:hover{transform:translateY(-2px);border-color:rgba(126,34,206,.5);box-shadow:0 8px 20px rgba(126,34,206,.16);background:linear-gradient(180deg,#fff 0,#f5ecff 100%)}
+.rel-grupo .adm-btn.rel-btn:active{transform:translateY(0);box-shadow:0 1px 2px rgba(76,29,149,.1)}
+.rel-grupo .adm-btn.rel-btn:focus-visible{outline:3px solid rgba(126,34,206,.35);outline-offset:2px}
+.rel-grupo .adm-btn.rel-btn .adm-ico{position:relative;width:42px;height:42px;border-radius:12px;font-size:17px;background:rgba(126,34,206,.10);color:#7e22ce;transition:background .18s,color .18s}
+.rel-grupo .adm-btn.rel-btn:hover .adm-ico{background:#7e22ce;color:#fff}
+.rel-btn>div:nth-child(2){flex:1;min-width:0}
+.rel-btn .adm-lbl{font-size:13px;color:var(--txt)}
+.rel-btn .adm-sub{font-size:11px;line-height:1.3}
+.rel-act{display:inline-flex;align-items:center;justify-content:center;gap:5px;flex-shrink:0;min-width:28px;height:28px;padding:0 9px;border-radius:999px;
+  font-size:10px;font-weight:800;letter-spacing:.5px;color:#7e22ce;background:rgba(126,34,206,.08);border:1px solid rgba(126,34,206,.22);transition:all .18s}
+.rel-act b{font-weight:800}
+.rel-btn.rel-op .rel-act{width:28px;padding:0;color:#64748b;background:#f1f5f9;border-color:#e2e8f0}
+.rel-grupo .adm-btn.rel-btn:hover .rel-act{background:#7e22ce;border-color:#7e22ce;color:#fff}
+.rel-btn.rel-dl:hover .rel-act i{animation:relBob .7s ease-in-out infinite}
+@keyframes relBob{0%,100%{transform:translateY(-1px)}50%{transform:translateY(2px)}}
+
+/* feedback: gerando / concluído / erro (classes aplicadas pelo bloco JS aditivo) */
+.rel-btn.is-busy{pointer-events:none;border-color:#7e22ce!important;background:#f3e8ff!important}
+.rel-btn.is-busy .adm-ico i{opacity:0}
+.rel-btn.is-busy .adm-ico::after{content:'';position:absolute;inset:10px;border:3px solid rgba(126,34,206,.22);border-top-color:#7e22ce;border-radius:50%;animation:sp .8s linear infinite}
+.rel-btn.is-busy::after{content:'';position:absolute;left:0;bottom:0;height:3px;width:100%;background:linear-gradient(90deg,transparent,#7e22ce,transparent);background-size:50% 100%;background-repeat:no-repeat;animation:relBar 1.1s linear infinite}
+@keyframes relBar{from{background-position:-60% 0}to{background-position:160% 0}}
+.rel-btn.is-done{border-color:#15803d!important;background:#f0fdf4!important}
+.rel-btn.is-err{border-color:#dc2626!important;background:#fef2f2!important}
+.rel-btn.is-done .adm-ico,.rel-btn.is-err .adm-ico{position:relative}
+.rel-btn.is-done .adm-ico i,.rel-btn.is-err .adm-ico i{opacity:0}
+.rel-btn.is-done .adm-ico::after,.rel-btn.is-err .adm-ico::after{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:"Font Awesome 6 Free";font-weight:900;font-size:17px}
+.rel-btn.is-done .adm-ico{background:rgba(21,128,61,.14)!important}.rel-btn.is-done .adm-ico::after{content:"\f00c";color:#15803d}
+.rel-btn.is-err .adm-ico{background:rgba(220,38,38,.12)!important}.rel-btn.is-err .adm-ico::after{content:"\f00d";color:#dc2626}
+
+/* ───── ÚLTIMAS MOVIMENTAÇÕES ───── */
+.mv-section{margin-top:22px}
+.mv-sec-head{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:14px}
+.mv-sec-id{display:flex;align-items:center;gap:12px}
+.mv-sec-ico{width:38px;height:38px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--ac2);background:var(--ac-dim)}
+.mv-sec-title{font-size:16px;font-weight:800;text-transform:uppercase;letter-spacing:.8px;color:var(--txt);line-height:1.15}
+.mv-sec-stamp{display:inline-flex;align-items:center;gap:5px;margin-top:3px;font-size:11px;font-weight:500;color:var(--txt3);font-variant-numeric:tabular-nums}
+.mv-sec-stamp i{font-size:10px}
+
+.mv-panel{--pk:#1d4ed8;--pkr:29,78,216;position:relative;margin-bottom:20px;padding:18px 20px 16px;background:var(--bg2);border:1px solid var(--bd);border-top:3px solid var(--pk);border-radius:16px;box-shadow:var(--sh1)}
+.mv-panel.mv-out{--pk:#15803d;--pkr:21,128,61;margin-bottom:0}
+.mv-head{display:flex;align-items:center;gap:12px;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--bd)}
+.mv-head-ico{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px;color:var(--pk);background:rgba(var(--pkr),.12);border:1px solid rgba(var(--pkr),.25)}
+.mv-title{font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:.8px;color:var(--pk);line-height:1.15;margin:0}
+.mv-sub{font-size:11.5px;font-weight:500;color:var(--txt3);margin:3px 0 0}
+
+.mv-kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:16px}
+.mv-kpi{display:flex;align-items:center;gap:12px;min-height:76px;padding:12px 14px;border-radius:14px;
+  background:linear-gradient(180deg,rgba(var(--kr),.07),rgba(var(--kr),.02));border:1px solid rgba(var(--kr),.22);transition:transform .18s,box-shadow .18s}
+.mv-kpi:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(var(--kr),.14)}
+.mv-kpi-ico{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px;color:var(--k);background:rgba(var(--kr),.14)}
+.mv-kpi-body{min-width:0}
+.mv-kpi-val{font-size:28px;font-weight:800;line-height:1;color:var(--k);letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.mv-kpi-lbl{margin-top:5px;font-size:10.5px;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:var(--txt2);white-space:nowrap}
+.mv-k-total{--k:#2b8fb5;--kr:43,143,181}
+.mv-k-viat{--k:#1d4ed8;--kr:29,78,216}
+.mv-k-mot{--k:#7e22ce;--kr:126,34,206}
+.mv-k-alt{--k:#c27a0e;--kr:194,122,14}
+.mv-k-sin{--k:#b91c1c;--kr:185,28,28}
+.mv-k-abs{--k:#1a73e8;--kr:26,115,232}
+
+/* tabela */
+.mv-panel .mov-tw{max-height:430px;border-radius:12px;border:1px solid var(--bd);box-shadow:none;background:#fff}
+.mv-table{border-collapse:separate;border-spacing:0;font-size:12.5px}
+.mv-t-in{min-width:880px}.mv-t-out{min-width:1040px}
+.mv-table thead{position:static;background:transparent}
+.mv-table thead th{position:sticky;top:0;z-index:4;padding:12px 14px;font-size:10px;font-weight:800;letter-spacing:.8px;color:var(--txt2);background:#eef3f9;border-bottom:1px solid var(--bd2);white-space:nowrap}
+.mv-table td{padding:12px 14px;max-width:none;overflow:visible;text-overflow:clip;border-bottom:1px solid #eef2f7;font-weight:600;color:var(--txt);vertical-align:middle;line-height:1.35}
+.mv-table tbody tr:last-child td{border-bottom:0}
+.mv-table tbody tr:nth-child(even):not([style]) td{background:#f7f9fc}
+.mv-table tbody tr:hover td:not(.erow){background:rgba(var(--pkr),.08)!important}
+.mv-table tbody tr[style] td:first-child{box-shadow:inset 3px 0 0 #dc2626}
+.mv-table td.erow{padding:34px!important;font-weight:500;color:var(--txt3)}
+.mv-table td:nth-child(1){white-space:nowrap;font-size:12px!important;font-weight:700;font-variant-numeric:tabular-nums;color:var(--txt2)!important}
+/* viatura em azul */
+.mv-table td:nth-child(2){white-space:nowrap;color:#1d4ed8!important;font-size:13.5px;font-weight:800!important;letter-spacing:.2px}
+.mv-table td:nth-child(2) span{display:inline-block;margin-top:2px;font-size:10.5px!important;font-weight:600!important;color:var(--txt3)!important;letter-spacing:.4px}
+/* motorista / comandante / setor */
+.mv-table td:nth-child(3),.mv-table td:nth-child(4),.mv-table td:nth-child(5){white-space:normal;min-width:120px}
+.mv-table td:nth-child(3){font-weight:800;color:var(--txt)}
+.mv-table td:nth-child(4){font-weight:600;color:#334155}
+.mv-table td:nth-child(5){font-weight:600;color:var(--txt2)}
+.mv-table td:nth-child(6){white-space:nowrap;font-variant-numeric:tabular-nums;font-weight:700}
+.mv-table .wa-btn{display:inline-flex;align-items:center;gap:3px;margin-top:4px;padding:2px 9px;border-radius:999px;font-size:10px;font-weight:700;line-height:1.5;box-shadow:0 1px 2px rgba(37,211,102,.35);transition:filter .15s}
+.mv-table .wa-btn:hover{filter:brightness(.93)}
+
+/* entradas: óleo/água e alterações */
+.mv-t-in td:nth-child(7){white-space:nowrap}
+.mv-table .nivel-badge{display:inline-flex;align-items:center;gap:3px;margin:0 4px 0 0;padding:3px 10px;border-radius:999px;font-size:11px;font-weight:700;line-height:1.4;border:1px solid transparent}
+.mv-table .nivel-min{border-color:rgba(185,28,28,.3)}.mv-table .nivel-med{border-color:rgba(146,64,14,.3)}.mv-table .nivel-max{border-color:rgba(21,128,61,.3)}
+.mv-t-in td:nth-child(8){min-width:170px;max-width:260px!important}
+.mv-t-in td:nth-child(8)>span{display:inline-flex!important;align-items:flex-start;gap:4px;padding:4px 11px!important;border-radius:999px!important;font-size:11px!important;font-weight:700!important;line-height:1.35}
+
+/* saídas: indicadores padronizados */
+.mv-table .bp{display:inline-flex;align-items:center;gap:3px;padding:3px 11px;border-radius:999px;font-size:11px;font-weight:800;letter-spacing:.3px;line-height:1.4;font-family:var(--sans)}
+.mv-t-out td:nth-child(7),.mv-t-out td:nth-child(10){white-space:nowrap}
+.mv-t-out td:nth-child(7) .bp[style*="239,68,68"]{background:rgba(26,115,232,.12)!important;color:#1d4ed8!important;border-color:rgba(26,115,232,.35)!important}
+.mv-t-out td:nth-child(7) .bp[style*="39,174,96"]{background:#f1f5f9!important;color:#64748b!important;border-color:#e2e8f0!important}
+.mv-t-out td:nth-child(8){white-space:nowrap;font-variant-numeric:tabular-nums;font-weight:800;text-align:right}
+.mv-t-out th:nth-child(8){text-align:right}
+.mv-t-out td:nth-child(9){white-space:normal;min-width:150px}
+.mv-t-out td:nth-child(9) small{display:inline-block;margin-top:5px;padding:2px 8px;border-radius:6px;background:rgba(185,28,28,.08);font-size:10.5px!important;font-weight:700;line-height:1.3}
+
+/* paginação */
+.mv-pag{display:flex;align-items:center;justify-content:flex-end;gap:8px;margin-top:12px;padding-top:12px;border-top:1px dashed var(--bd)}
+.mv-pag .mov-pag-info{flex:1;font-family:var(--sans);font-size:12px;font-weight:600;color:var(--txt2);font-variant-numeric:tabular-nums}
+.mv-pag .mov-pag-btn{width:auto;min-width:36px;height:34px;padding:0 13px;gap:6px;border-radius:10px;border:1px solid var(--bd2);background:#fff;color:var(--txt);font-size:12px;font-weight:700;font-family:var(--sans);box-shadow:0 1px 2px rgba(15,23,42,.06)}
+.mv-panel .mov-pag-btn:hover:not(:disabled){border-color:var(--pk);color:var(--pk);background:rgba(var(--pkr),.06);transform:translateY(-1px)}
+.mv-pag .mov-pag-btn:focus-visible{outline:3px solid rgba(var(--pkr),.3);outline-offset:1px}
+.mv-pag .mov-pag-btn:disabled{opacity:.4;box-shadow:none}
+
+/* responsividade */
+@media (max-width:900px){
+  .mv-panel{padding:16px 14px 14px}
+  .rel-grupo .adm-btns{grid-template-columns:repeat(auto-fill,minmax(230px,1fr))}
+}
+@media (max-width:640px){
+  .mv-sec-title{font-size:14px}
+  .mv-kpis{grid-template-columns:1fr 1fr;gap:10px}
+  .mv-kpis>.mv-kpi:last-child:nth-child(odd){grid-column:1/-1}
+  .mv-kpi{padding:10px 11px;gap:9px;min-height:68px}
+  .mv-kpi-ico{width:34px;height:34px;font-size:14px}
+  .mv-kpi-val{font-size:24px}
+  .mv-kpi-lbl{font-size:9.5px;white-space:normal}
+  .mv-pag{flex-wrap:wrap}.mv-pag .mov-pag-info{flex-basis:100%}
+  .mv-pag .mov-pag-btn{flex:1}
+  .rel-grupo .adm-btns{grid-template-columns:1fr;padding:12px}
+  .rel-act b{display:none}.rel-act{padding:0;width:28px}
+}
+@media (prefers-reduced-motion:reduce){
+  .rel-btn.is-busy::after,.rel-btn.is-busy .adm-ico::after,.rel-btn.rel-dl:hover .rel-act i{animation:none}
+}
+</style>
 </head>
 <body>
 
@@ -539,78 +686,74 @@ td{font-weight:700;color:var(--txt)}
   <div class="v-grid" id="vGrid"><div class="sk-card"></div><div class="sk-card"></div><div class="sk-card"></div><div class="sk-card"></div><div class="sk-card"></div><div class="sk-card"></div></div>
 
   <!-- Últimas Movimentações -->
-  <div style="margin-top:18px">
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:8px">
-      <div style="display:flex;align-items:center;gap:10px">
-        <i class="fas fa-history" style="color:var(--ac);font-size:16px"></i>
+  <div class="mv-section">
+    <div class="mv-sec-head">
+      <div class="mv-sec-id">
+        <span class="mv-sec-ico"><i class="fas fa-history"></i></span>
         <div>
-          <div style="font-size:16px;font-weight:800;text-transform:uppercase;letter-spacing:.8px;color:var(--txt)">Últimas Movimentações</div>
-          <div style="font-size:10px;color:var(--txt3);font-family:var(--mono)" id="movTimestamp">— atualizado em --:--</div>
+          <div class="mv-sec-title">Últimas Movimentações</div>
+          <div class="mv-sec-stamp"><i class="far fa-clock"></i><span id="movTimestamp">— atualizado em --:--</span></div>
         </div>
       </div>
       <button class="btn btn-s sm" onclick="carregarUltimasMovimentacoes(true)" title="Atualizar"><i class="fas fa-sync-alt"></i> Atualizar</button>
     </div>
 
     <!-- ÚLTIMAS ENTRADAS -->
-    <div style="margin-bottom:18px;background:var(--bg2);border:1px solid var(--bd);border-left:4px solid #1d4ed8;border-radius:10px;padding:14px 16px">
-      <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid var(--bd)">
-        <div style="width:32px;height:32px;border-radius:8px;background:rgba(96,165,250,.15);border:1px solid rgba(96,165,250,.3);display:flex;align-items:center;justify-content:center;flex-shrink:0">
-          <i class="fas fa-sign-in-alt" style="color:#1d4ed8;font-size:14px"></i>
-        </div>
+    <section class="mv-panel mv-in">
+      <div class="mv-head">
+        <div class="mv-head-ico"><i class="fas fa-sign-in-alt"></i></div>
         <div>
-          <div style="font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:.8px;color:#1d4ed8;line-height:1.1">Últimas Entradas de Serviço</div>
-          <div style="font-size:10px;color:var(--txt3);margin-top:1px">Registros de entrada de viaturas em serviço</div>
+          <h3 class="mv-title">Últimas Entradas de Serviço</h3>
+          <p class="mv-sub">Registros de entrada de viaturas em serviço</p>
         </div>
       </div>
-      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:12px">
-        <div class="scp" style="border-top:2px solid var(--ac)"><div class="scp-val" style="color:var(--ac)" id="movEStT">—</div><div class="scp-lbl">Total</div></div>
-        <div class="scp" style="border-top:2px solid #1d4ed8"><div class="scp-val" style="color:#1d4ed8" id="movEStV">—</div><div class="scp-lbl">Viaturas</div></div>
-        <div class="scp" style="border-top:2px solid #7e22ce"><div class="scp-val" style="color:#7e22ce" id="movEStM">—</div><div class="scp-lbl">Motoristas</div></div>
-        <div class="scp" style="border-top:2px solid var(--ylw)"><div class="scp-val" style="color:var(--ylw)" id="movEStA">—</div><div class="scp-lbl">Com Alteração</div></div>
+      <div class="mv-kpis">
+        <div class="mv-kpi mv-k-total"><span class="mv-kpi-ico"><i class="fas fa-list-ul"></i></span><div class="mv-kpi-body"><div class="mv-kpi-val" id="movEStT">—</div><div class="mv-kpi-lbl">Total</div></div></div>
+        <div class="mv-kpi mv-k-viat"><span class="mv-kpi-ico"><i class="fas fa-car"></i></span><div class="mv-kpi-body"><div class="mv-kpi-val" id="movEStV">—</div><div class="mv-kpi-lbl">Viaturas</div></div></div>
+        <div class="mv-kpi mv-k-mot"><span class="mv-kpi-ico"><i class="fas fa-user"></i></span><div class="mv-kpi-body"><div class="mv-kpi-val" id="movEStM">—</div><div class="mv-kpi-lbl">Motoristas</div></div></div>
+        <div class="mv-kpi mv-k-alt"><span class="mv-kpi-ico"><i class="fas fa-triangle-exclamation"></i></span><div class="mv-kpi-body"><div class="mv-kpi-val" id="movEStA">—</div><div class="mv-kpi-lbl">Com Alteração</div></div></div>
       </div>
       <div class="mov-tw">
-        <table><thead><tr>
+        <table class="mv-table mv-t-in"><thead><tr>
           <th>Data/Hora</th><th>Viatura</th><th>Motorista</th><th>Comandante</th><th>Setor</th><th>Odômetro</th><th>Óleo/Água</th><th>Alterações</th>
         </tr></thead>
         <tbody id="tbUltEntradas"><tr><td colspan="8" class="erow">Carregando...</td></tr></tbody></table>
       </div>
-      <div class="mov-pag">
+      <div class="mov-pag mv-pag">
         <span class="mov-pag-info" id="movEPagInfo"></span>
-        <button class="mov-pag-btn" id="movEPrev" onclick="movPagE(-1)" disabled title="Página anterior"><i class="fas fa-chevron-left"></i></button>
-        <button class="mov-pag-btn" id="movENext" onclick="movPagE(1)" disabled title="Próxima página"><i class="fas fa-chevron-right"></i></button>
+        <button class="mov-pag-btn" id="movEPrev" onclick="movPagE(-1)" disabled title="Página anterior"><i class="fas fa-chevron-left"></i><span>Anterior</span></button>
+        <button class="mov-pag-btn" id="movENext" onclick="movPagE(1)" disabled title="Próxima página"><span>Próxima</span><i class="fas fa-chevron-right"></i></button>
       </div>
-    </div>
+    </section>
 
     <!-- ÚLTIMAS SAÍDAS -->
-    <div style="background:var(--bg2);border:1px solid var(--bd);border-left:4px solid #15803d;border-radius:10px;padding:14px 16px">
-      <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid var(--bd)">
-        <div style="width:32px;height:32px;border-radius:8px;background:rgba(74,222,128,.15);border:1px solid rgba(74,222,128,.3);display:flex;align-items:center;justify-content:center;flex-shrink:0">
-          <i class="fas fa-sign-out-alt" style="color:#15803d;font-size:14px"></i>
-        </div>
+    <section class="mv-panel mv-out">
+      <div class="mv-head">
+        <div class="mv-head-ico"><i class="fas fa-sign-out-alt"></i></div>
         <div>
-          <div style="font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:.8px;color:#15803d;line-height:1.1">Últimas Saídas de Serviço</div>
-          <div style="font-size:10px;color:var(--txt3);margin-top:1px">Registros de saída de viaturas do serviço</div>
+          <h3 class="mv-title">Últimas Saídas de Serviço</h3>
+          <p class="mv-sub">Registros de saída de viaturas do serviço</p>
         </div>
       </div>
-      <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:12px">
-        <div class="scp" style="border-top:2px solid var(--ac)"><div class="scp-val" style="color:var(--ac)" id="movSStT">—</div><div class="scp-lbl">Total</div></div>
-        <div class="scp" style="border-top:2px solid #1d4ed8"><div class="scp-val" style="color:#1d4ed8" id="movSStV">—</div><div class="scp-lbl">Viaturas</div></div>
-        <div class="scp" style="border-top:2px solid #7e22ce"><div class="scp-val" style="color:#7e22ce" id="movSStM">—</div><div class="scp-lbl">Motoristas</div></div>
-        <div class="scp" style="border-top:2px solid #b91c1c"><div class="scp-val" style="color:#b91c1c" id="movSStSin">—</div><div class="scp-lbl">Sinistros</div></div>
-        <div class="scp" style="border-top:2px solid #1a73e8"><div class="scp-val" style="color:#1a73e8" id="movSStAbs">—</div><div class="scp-lbl">Abastecimentos</div></div>
+      <div class="mv-kpis">
+        <div class="mv-kpi mv-k-total"><span class="mv-kpi-ico"><i class="fas fa-list-ul"></i></span><div class="mv-kpi-body"><div class="mv-kpi-val" id="movSStT">—</div><div class="mv-kpi-lbl">Total</div></div></div>
+        <div class="mv-kpi mv-k-viat"><span class="mv-kpi-ico"><i class="fas fa-car"></i></span><div class="mv-kpi-body"><div class="mv-kpi-val" id="movSStV">—</div><div class="mv-kpi-lbl">Viaturas</div></div></div>
+        <div class="mv-kpi mv-k-mot"><span class="mv-kpi-ico"><i class="fas fa-user"></i></span><div class="mv-kpi-body"><div class="mv-kpi-val" id="movSStM">—</div><div class="mv-kpi-lbl">Motoristas</div></div></div>
+        <div class="mv-kpi mv-k-sin"><span class="mv-kpi-ico"><i class="fas fa-car-burst"></i></span><div class="mv-kpi-body"><div class="mv-kpi-val" id="movSStSin">—</div><div class="mv-kpi-lbl">Sinistros</div></div></div>
+        <div class="mv-kpi mv-k-abs"><span class="mv-kpi-ico"><i class="fas fa-gas-pump"></i></span><div class="mv-kpi-body"><div class="mv-kpi-val" id="movSStAbs">—</div><div class="mv-kpi-lbl">Abastecimentos</div></div></div>
       </div>
       <div class="mov-tw">
-        <table><thead><tr>
+        <table class="mv-table mv-t-out"><thead><tr>
           <th>Data/Hora</th><th>Viatura</th><th>Motorista</th><th>Comandante</th><th>Setor</th><th>Odômetro</th><th>Abasteceu</th><th>Saldo</th><th>Pendência</th><th>Sinistro</th>
         </tr></thead>
         <tbody id="tbUltSaidas"><tr><td colspan="10" class="erow">Carregando...</td></tr></tbody></table>
       </div>
-      <div class="mov-pag">
+      <div class="mov-pag mv-pag">
         <span class="mov-pag-info" id="movSPagInfo"></span>
-        <button class="mov-pag-btn" id="movSPrev" onclick="movPagS(-1)" disabled title="Página anterior"><i class="fas fa-chevron-left"></i></button>
-        <button class="mov-pag-btn" id="movSNext" onclick="movPagS(1)" disabled title="Próxima página"><i class="fas fa-chevron-right"></i></button>
+        <button class="mov-pag-btn" id="movSPrev" onclick="movPagS(-1)" disabled title="Página anterior"><i class="fas fa-chevron-left"></i><span>Anterior</span></button>
+        <button class="mov-pag-btn" id="movSNext" onclick="movPagS(1)" disabled title="Próxima página"><span>Próxima</span><i class="fas fa-chevron-right"></i></button>
       </div>
-    </div>
+    </section>
   </div>
 </div>
 
@@ -706,18 +849,18 @@ td{font-weight:700;color:var(--txt)}
         <button class="adm-btn ao" onclick="abrirCfgOf()"><div class="adm-ico"><i class="fas fa-sliders-h"></i></div><div><div class="adm-lbl">Configurar Oficinas</div><div class="adm-sub">Listas de oficinas e motivos</div></div></button>
       </div>
     </div>
-    <div class="adm-grupo">
+    <div class="adm-grupo rel-grupo">
       <div class="adm-grupo-hdr p"><i class="fas fa-chart-bar"></i> Relatórios</div>
       <div class="adm-btns">
-        <button class="adm-btn ap" onclick="admRel('mensal')"><div class="adm-ico"><i class="fas fa-file-pdf"></i></div><div><div class="adm-lbl">Relatório Mês Atual</div><div class="adm-sub">PDF do mês corrente</div></div></button>
-        <button class="adm-btn ap" onclick="admRel('personalizado')"><div class="adm-ico"><i class="fas fa-calendar-alt"></i></div><div><div class="adm-lbl">Relatório Personalizado</div><div class="adm-sub">Escolher mês e ano</div></div></button>
-        <button class="adm-btn ap" onclick="admRel('oleo')"><div class="adm-ico"><i class="fas fa-oil-can"></i></div><div><div class="adm-lbl">Relatório de Óleo</div><div class="adm-sub">Status de troca por viatura</div></div></button>
-        <button class="adm-btn ap" onclick="admRel('oficinas')"><div class="adm-ico"><i class="fas fa-wrench"></i></div><div><div class="adm-lbl">Relatório de Oficinas</div><div class="adm-sub">Histórico de manutenções externas</div></div></button>
-        <button class="adm-btn ap" onclick="admRel('cobranca')"><div class="adm-ico"><i class="fas fa-file-invoice-dollar"></i></div><div><div class="adm-lbl">Relatório de Cobrança</div><div class="adm-sub">Viaturas que excederam limite</div></div></button>
-        <button class="adm-btn ap" onclick="admRel('atualizarOleo')"><div class="adm-ico"><i class="fas fa-sync-alt"></i></div><div><div class="adm-lbl">Atualizar Controle de Óleo</div><div class="adm-sub">Recalcular KM de todas viaturas</div></div></button>
-        <button class="adm-btn ap" onclick="admRel('indice')"><div class="adm-ico"><i class="fas fa-list-alt"></i></div><div><div class="adm-lbl">Atualizar Índice de Viaturas</div><div class="adm-sub">Reconstruir índice da frota na planilha</div></div></button>
-        <button class="adm-btn ap" onclick="admRel('pdf-indice')"><div class="adm-ico"><i class="fas fa-file-pdf"></i></div><div><div class="adm-lbl">PDF do Índice de Viaturas</div><div class="adm-sub">Exportar índice completo como PDF</div></div></button>
-        <button class="adm-btn ap" onclick="admRel('arquivar')"><div class="adm-ico"><i class="fas fa-archive"></i></div><div><div class="adm-lbl">Arquivar Registros Antigos</div><div class="adm-sub">Mover registros &gt;90 dias</div></div></button>
+        <button class="adm-btn ap rel-btn rel-dl" onclick="admRel('mensal')"><div class="adm-ico"><i class="fas fa-file-pdf"></i></div><div><div class="adm-lbl">Relatório Mês Atual</div><div class="adm-sub">PDF do mês corrente</div></div><span class="rel-act" aria-hidden="true"><i class="fas fa-download"></i><b>PDF</b></span></button>
+        <button class="adm-btn ap rel-btn rel-dl" onclick="admRel('personalizado')"><div class="adm-ico"><i class="fas fa-calendar-alt"></i></div><div><div class="adm-lbl">Relatório Personalizado</div><div class="adm-sub">Escolher mês e ano</div></div><span class="rel-act" aria-hidden="true"><i class="fas fa-download"></i><b>PDF</b></span></button>
+        <button class="adm-btn ap rel-btn rel-dl" onclick="admRel('oleo')"><div class="adm-ico"><i class="fas fa-oil-can"></i></div><div><div class="adm-lbl">Relatório de Óleo</div><div class="adm-sub">Status de troca por viatura</div></div><span class="rel-act" aria-hidden="true"><i class="fas fa-download"></i><b>PDF</b></span></button>
+        <button class="adm-btn ap rel-btn rel-dl" onclick="admRel('oficinas')"><div class="adm-ico"><i class="fas fa-wrench"></i></div><div><div class="adm-lbl">Relatório de Oficinas</div><div class="adm-sub">Histórico de manutenções externas</div></div><span class="rel-act" aria-hidden="true"><i class="fas fa-download"></i><b>PDF</b></span></button>
+        <button class="adm-btn ap rel-btn rel-dl" onclick="admRel('cobranca')"><div class="adm-ico"><i class="fas fa-file-invoice-dollar"></i></div><div><div class="adm-lbl">Relatório de Cobrança</div><div class="adm-sub">Viaturas que excederam limite</div></div><span class="rel-act" aria-hidden="true"><i class="fas fa-download"></i><b>PDF</b></span></button>
+        <button class="adm-btn ap rel-btn rel-op" onclick="admRel('atualizarOleo')"><div class="adm-ico"><i class="fas fa-sync-alt"></i></div><div><div class="adm-lbl">Atualizar Controle de Óleo</div><div class="adm-sub">Recalcular KM de todas viaturas</div></div><span class="rel-act" aria-hidden="true"><i class="fas fa-chevron-right"></i></span></button>
+        <button class="adm-btn ap rel-btn rel-op" onclick="admRel('indice')"><div class="adm-ico"><i class="fas fa-list-alt"></i></div><div><div class="adm-lbl">Atualizar Índice de Viaturas</div><div class="adm-sub">Reconstruir índice da frota na planilha</div></div><span class="rel-act" aria-hidden="true"><i class="fas fa-chevron-right"></i></span></button>
+        <button class="adm-btn ap rel-btn rel-dl" onclick="admRel('pdf-indice')"><div class="adm-ico"><i class="fas fa-file-pdf"></i></div><div><div class="adm-lbl">PDF do Índice de Viaturas</div><div class="adm-sub">Exportar índice completo como PDF</div></div><span class="rel-act" aria-hidden="true"><i class="fas fa-download"></i><b>PDF</b></span></button>
+        <button class="adm-btn ap rel-btn rel-op" onclick="admRel('arquivar')"><div class="adm-ico"><i class="fas fa-archive"></i></div><div><div class="adm-lbl">Arquivar Registros Antigos</div><div class="adm-sub">Mover registros &gt;90 dias</div></div><span class="rel-act" aria-hidden="true"><i class="fas fa-chevron-right"></i></span></button>
       </div>
     </div>
     <div class="adm-grupo">
@@ -2758,6 +2901,35 @@ async function admPDFIndice() {
     }
   } catch(e) { unload(); toast('Erro: ' + e.message, 'err'); }
 }
+</script>
+
+<script id="bptar-visual-v2-js">
+/* Feedback visual dos botões de Relatórios. Apenas observa o overlay #lov e o último toast;
+   não chama, substitui nem altera nenhuma função do sistema. */
+(function(){
+  'use strict';
+  try {
+    var lov = document.getElementById('lov');
+    if (!lov || !window.MutationObserver) return;
+    var cur = null;
+    document.addEventListener('click', function(e){
+      var b = e.target && e.target.closest ? e.target.closest('.rel-btn') : null;
+      if (!b) return;
+      cur = b;
+      setTimeout(function(){ if (cur === b && !b.classList.contains('is-busy')) cur = null; }, 0);
+    }, true);
+    new MutationObserver(function(){
+      if (!cur) return;
+      if (lov.classList.contains('on')) { cur.classList.add('is-busy'); cur.setAttribute('aria-busy','true'); return; }
+      if (!cur.classList.contains('is-busy')) return;
+      var b = cur; cur = null;
+      b.classList.remove('is-busy'); b.removeAttribute('aria-busy');
+      var ts = document.querySelectorAll('.toast-el'), last = ts[ts.length-1];
+      var st = last && last.classList.contains('ok') ? 'is-done' : (last && last.classList.contains('err') ? 'is-err' : '');
+      if (st) { b.classList.add(st); setTimeout(function(){ b.classList.remove(st); }, 2600); }
+    }).observe(lov, {attributes:true, attributeFilter:['class']});
+  } catch(e) {}
+})();
 </script>
 </body>
 </html>
